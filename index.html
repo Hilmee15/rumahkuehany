@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Rumah Kue Hany — Citarasa Istimewa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="wrap nav">
+            <a class="logo" href="#top">Rumah Kue Hany</a>
+            <nav class="nav-links"><a href="#menu">Menu</a><a href="#kue">Pilihan Kue</a><a
+                    href="#tentang">Tentang</a><a href="#kontak">Kontak</a></nav>
+            <div class="nav-right">
+                <button class="icon-btn" onclick="openCart()" aria-label="Keranjang">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1" />
+                        <circle cx="20" cy="21" r="1" />
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                    </svg>
+                    <span class="badge" id="cartBadge" style="display:none;">0</span>
+                </button>
+                <a class="pill"
+                    href="https://wa.me/6285379444875?text=Halo%20Rumah%20Kue%20Hany%2C%20saya%20mau%20tanya%20menu"
+                    target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="top">
+        <div class="wrap">
+            <div class="hero">
+                <div class="eyebrow reveal">Snackbox &amp; kue tampah · Palembang &amp; Kayuagung</div>
+                <h1 class="reveal">Citarasa<br>Istimewa<em>.</em></h1>
+                <p class="lead reveal">Snackbox terlengkap di Palembang &amp; Kayuagung. Pilih isian, masukkan
+                    keranjang, dan pesanan langsung tertulis rapi di WhatsApp.</p>
+                <div class="btns reveal">
+                    <a class="pill" href="#menu">Lihat menu</a>
+                    <a class="pill ghost" href="https://instagram.com/rumahkuehany" target="_blank"
+                        rel="noopener">Instagram</a>
+                </div>
+            </div>
+        </div>
+
+        <section id="tentang">
+            <div class="wrap">
+                <div class="kicker reveal">Yang kami buat</div>
+                <h2 class="reveal">Dua sajian, satu rasa <em>rumahan</em>.</h2>
+                <p class="sub reveal">Dibuat segar setiap hari dengan bahan pilihan, seakan untuk keluarga sendiri.</p>
+                <div class="duo">
+                    <div class="duo-card reveal">
+                        <div class="num">01</div>
+                        <h3>Kue Tampah</h3>
+                        <p>Tampah kecil (55–65 kue), sedang (85–100 kue), dan besar (120–140 kue), cocok untuk arisan
+                            dan hajatan.</p>
+                        <div class="chips"><span class="chip">Kecil</span><span class="chip">Sedang</span><span
+                                class="chip">Besar</span></div>
+                    </div>
+                    <div class="duo-card reveal">
+                        <div class="num">02</div>
+                        <h3>Snack Box</h3>
+                        <p>Kotak praktis untuk rapat, pengajian, dan acara kantor. Isi 2, 3, atau 4 kue yang Anda pilih
+                            sendiri.</p>
+                        <div class="chips"><span class="chip">Isi 2</span><span class="chip">Isi 3</span><span
+                                class="chip">Isi 4</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu">
+            <div class="wrap">
+                <div class="kicker reveal">/ Menu pilihan</div>
+                <h2 class="reveal">Pilih, racik, <em>pesan</em>.</h2>
+                <div class="tabs reveal" id="tabs">
+                    <button class="tab active" data-cat="tampah">Kue Tampah</button>
+                    <button class="tab" data-cat="snack">Snack Box</button>
+                </div>
+                <div class="rows" id="rows"></div>
+            </div>
+        </section>
+
+        <section id="kue">
+            <div class="wrap">
+                <div class="kicker reveal">/ Pilihan kue</div>
+                <h2 class="reveal">Semua kue, <em>satu</em> meja.</h2>
+                <div id="cakeGrid"></div>
+            </div>
+        </section>
+
+        <div class="marquee" aria-hidden="true">
+            <div class="marquee-track"><span>Pesan sekarang<i>✱</i></span><span>Pesan sekarang<i>✱</i></span><span>Pesan
+                    sekarang<i>✱</i></span><span>Pesan sekarang<i>✱</i></span></div>
+        </div>
+
+        <section class="contact" id="kontak">
+            <div class="wrap">
+                <div class="kicker reveal">Sudah kebayang rasanya?</div>
+                <h2 class="reveal">Jangan cuma dibayangin, <em>dicicipi</em> dong.</h2>
+                <p class="sub reveal">Satu pesan WhatsApp, dan kue-kue enak ini siap menemani acaramu. Kamu tinggal
+                    duduk manis.</p>
+                <div class="btns reveal">
+                    <a class="pill"
+                        href="https://wa.me/6285379444875?text=Halo%20Rumah%20Kue%20Hany%2C%20saya%20mau%20pesan"
+                        target="_blank" rel="noopener">Chat WhatsApp</a>
+                    <button class="pill ghost" id="copyBtn" onclick="copyNumber()">Salin nomor</button>
+                </div>
+                <div class="socials reveal"><a href="https://instagram.com/rumahkuehany" target="_blank"
+                        rel="noopener">Instagram</a><a href="https://wa.me/6285379444875" target="_blank"
+                        rel="noopener">WhatsApp</a></div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="info">
+        <div class="wrap foot-grid">
+            <div>
+                <h4 class="foot-brand">Rumah Kue Hany</h4>
+                <p>Snackbox terlengkap di Palembang &amp; Kayuagung. Citarasa istimewa untuk setiap acara.</p>
+            </div>
+            <div>
+                <h4>Tautan</h4>
+                <a href="#menu">Menu</a>
+                <a href="#kue">Pilihan Kue</a>
+                <a href="#tentang">Tentang</a>
+                <a href="#kontak">Kontak</a>
+            </div>
+            <div>
+                <h4>Info Toko</h4>
+                <p>Perumnas Sukadana, Kayuagung, OKI, Sumatera Selatan 30611</p>
+                <p>Buka setiap hari, 07:00 – 20:00 WIB</p>
+                <p>WhatsApp: 0853-7944-4875</p>
+            </div>
+            <div>
+                <h4>Ikuti Kami</h4>
+                <a href="https://instagram.com/rumahkuehany" target="_blank" rel="noopener">Instagram</a>
+                <a href="https://wa.me/6285379444875" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+        </div>
+        <div class="wrap foot-bottom">© 2026 Rumah Kue Hany</div>
+    </footer>
+
+    <div class="cartbar" id="cartbar">
+        <div class="cartbar-inner" id="cartbarInner" onclick="openCart()"></div>
+    </div>
+    <div class="overlay" id="itemOverlay">
+        <div class="sheet" id="itemSheet"></div>
+    </div>
+    <div class="overlay" id="cartOverlay">
+        <div class="sheet" id="cartSheet"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
