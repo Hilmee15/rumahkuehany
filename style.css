@@ -1,11 +1,19 @@
 :root {
-    --bg: #2B1D14;
-    --surface: #36251A;
-    --surface-2: #43301F;
-    --text: #F3E7D8;
-    --muted: #A89480;
-    --accent: #D69A5C;
-    --line: rgba(243, 231, 216, .12);
+    /* TEMA UTAMA: latar cokelat muda yang lembut, teks cokelat tua */
+    --bg: #F1E6D7;
+    --surface: #F8F1E7;
+    --surface-2: #E8DAC8;
+    --text: #47281A;
+    --muted: #755B49;
+    --accent: #9A5818;
+    --line: rgba(71, 40, 26, .16);
+    --danger: #B53A24;
+    --bg-rgb: 241, 230, 215;
+    --pad-x: clamp(24px, 5vw, 112px);
+    --header-bg: rgba(241, 230, 215, .9);
+    --overlay: rgba(40, 22, 12, .5);
+    --ph-end: #DCC8B0;
+    color-scheme: light;
     --sans: 'Inter Tight', system-ui, sans-serif;
     --serif: 'Instrument Serif', Georgia, serif;
     box-sizing: border-box;
@@ -13,8 +21,25 @@
     padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
+/* TEMA KEBALIKAN: latar cokelat, teks putih. Aktifkan dengan <html data-theme="brown"> */
+html[data-theme="brown"] {
+    --bg: #2B1D14;
+    --surface: #36251A;
+    --surface-2: #43301F;
+    --text: #FFFFFF;
+    --muted: #CDBBAA;
+    --accent: #D69A5C;
+    --line: rgba(255, 255, 255, .14);
+    --danger: #E07A63;
+    --bg-rgb: 43, 29, 20;
+    --header-bg: rgba(43, 29, 20, .88);
+    --overlay: rgba(10, 5, 2, .65);
+    --ph-end: #573D2A;
+    color-scheme: dark;
+}
+
 html {
-    scroll-padding-top: 70px;
+    scroll-padding-top: 92px;
     scroll-behavior: smooth;
 }
 
@@ -58,9 +83,10 @@ em,
 }
 
 .wrap {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 0 6vw;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0 var(--pad-x);
 }
 
 .reveal {
@@ -75,7 +101,7 @@ em,
 }
 
 .ph-img {
-    background: linear-gradient(135deg, var(--surface-2), #573D2A);
+    background: linear-gradient(135deg, var(--surface-2), var(--ph-end));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -90,7 +116,7 @@ header {
     position: sticky;
     top: env(safe-area-inset-top, 0px);
     z-index: 30;
-    background: rgba(43, 29, 20, .85);
+    background: var(--header-bg);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--line);
 }
@@ -99,21 +125,21 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 64px;
-    gap: 16px;
+    height: 80px;
+    gap: 20px;
 }
 
 .logo {
     font-weight: 600;
-    font-size: 17px;
+    font-size: 21px;
     text-decoration: none;
     letter-spacing: -.2px;
 }
 
 .nav-links {
     display: flex;
-    gap: 26px;
-    font-size: 14px;
+    gap: 38px;
+    font-size: 16px;
     color: var(--muted);
 }
 
@@ -134,8 +160,8 @@ header {
 
 .icon-btn {
     position: relative;
-    width: 38px;
-    height: 38px;
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
     border: 1px solid var(--line);
     background: none;
@@ -175,10 +201,10 @@ header {
     background: var(--text);
     color: var(--bg);
     text-decoration: none;
-    padding: 10px 18px;
+    padding: 13px 26px;
     border-radius: 999px;
     font-weight: 600;
-    font-size: 13.5px;
+    font-size: 15.5px;
     border: none;
     cursor: pointer;
     transition: background .2s, transform .2s;
@@ -211,39 +237,39 @@ header {
 
 /* hero */
 .hero {
-    min-height: calc(100svh - 64px);
+    min-height: calc(100svh - 80px);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 60px 0 50px;
+    padding: 80px 0 70px;
 }
 
 .eyebrow {
     color: var(--muted);
-    font-size: 13.5px;
-    margin-bottom: 22px;
+    font-size: clamp(15px, 1.2vw, 18px);
+    margin-bottom: 26px;
 }
 
 .hero h1 {
-    font-size: clamp(52px, 11vw, 138px);
+    font-size: clamp(56px, 12vw, 210px);
     line-height: .95;
     font-weight: 600;
     letter-spacing: -.04em;
-    margin: 0 0 28px;
+    margin: 0 0 34px;
 }
 
 .hero p.lead {
-    font-size: clamp(16px, 1.6vw, 19px);
+    font-size: clamp(18px, 1.9vw, 28px);
     color: var(--muted);
-    max-width: 52ch;
-    margin: 0 0 30px;
+    max-width: 56ch;
+    margin: 0 0 38px;
 }
 
 .hero .btns {
     display: flex;
-    gap: 12px;
+    gap: 14px;
     flex-wrap: wrap;
-    margin-bottom: 34px;
+    margin-bottom: 40px;
 }
 
 .chips {
@@ -255,49 +281,49 @@ header {
 .chip {
     border: 1px solid var(--line);
     color: var(--muted);
-    font-size: 12.5px;
-    padding: 6px 13px;
+    font-size: 14.5px;
+    padding: 8px 16px;
     border-radius: 999px;
 }
 
 /* sections */
 section {
-    padding: 80px 0;
+    padding: clamp(72px, 8vw, 140px) 0;
 }
 
 .kicker {
     color: var(--muted);
-    font-size: 13.5px;
-    margin-bottom: 12px;
+    font-size: clamp(15px, 1.2vw, 18px);
+    margin-bottom: 14px;
 }
 
 h2 {
-    font-size: clamp(30px, 4.6vw, 56px);
+    font-size: clamp(36px, 5.4vw, 92px);
     line-height: 1.05;
     font-weight: 600;
     letter-spacing: -.03em;
-    margin: 0 0 14px;
-    max-width: 18ch;
+    margin: 0 0 18px;
+    max-width: 20ch;
 }
 
 .sub {
     color: var(--muted);
-    max-width: 52ch;
-    margin: 0 0 40px;
-    font-size: 15.5px;
+    max-width: 58ch;
+    margin: 0 0 48px;
+    font-size: clamp(16px, 1.35vw, 20px);
 }
 
 .duo {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 18px;
+    gap: 28px;
 }
 
 .duo-card {
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: 20px;
-    padding: 30px;
+    border-radius: 28px;
+    padding: clamp(28px, 3vw, 52px);
     transition: border-color .25s, transform .25s;
 }
 
@@ -308,12 +334,12 @@ h2 {
 
 .duo-card .num {
     color: var(--accent);
-    font-size: 13px;
-    margin-bottom: 34px;
+    font-size: 15px;
+    margin-bottom: 48px;
 }
 
 .duo-card h3 {
-    font-size: 26px;
+    font-size: clamp(28px, 2.6vw, 42px);
     font-weight: 600;
     letter-spacing: -.02em;
     margin: 0 0 10px;
@@ -321,8 +347,8 @@ h2 {
 
 .duo-card p {
     color: var(--muted);
-    font-size: 14.5px;
-    margin: 0 0 20px;
+    font-size: clamp(16px, 1.3vw, 19px);
+    margin: 0 0 24px;
 }
 
 @media (max-width:760px) {
@@ -334,17 +360,17 @@ h2 {
 /* menu list (editorial rows) */
 .tabs {
     display: flex;
-    gap: 8px;
-    margin-bottom: 26px;
+    gap: 10px;
+    margin-bottom: 36px;
 }
 
 .tab {
     background: none;
     border: 1px solid var(--line);
     color: var(--muted);
-    padding: 9px 18px;
+    padding: 12px 26px;
     border-radius: 999px;
-    font-size: 13.5px;
+    font-size: 16px;
     font-weight: 500;
     cursor: pointer;
     font-family: inherit;
@@ -363,10 +389,10 @@ h2 {
 
 .row {
     display: grid;
-    grid-template-columns: 44px 72px 1fr auto auto;
-    gap: 20px;
+    grid-template-columns: 56px 112px 1fr auto auto;
+    gap: 28px;
     align-items: center;
-    padding: 22px 0;
+    padding: 30px 0;
     border-bottom: 1px solid var(--line);
     cursor: pointer;
     transition: padding .25s, background .25s;
@@ -380,38 +406,39 @@ h2 {
 
 .row .n {
     color: var(--muted);
-    font-size: 13px;
+    font-size: 16px;
 }
 
 .row .thumb {
-    width: 72px;
-    height: 72px;
-    border-radius: 14px;
+    width: 112px;
+    height: 112px;
+    border-radius: 20px;
+    font-size: 12px;
 }
 
 .row h3 {
-    margin: 0 0 3px;
-    font-size: clamp(18px, 2.2vw, 24px);
+    margin: 0 0 5px;
+    font-size: clamp(21px, 2.8vw, 38px);
     font-weight: 600;
     letter-spacing: -.02em;
 }
 
 .row .d {
     color: var(--muted);
-    font-size: 13.5px;
+    font-size: clamp(15px, 1.2vw, 18px);
 }
 
 .row .price {
     font-family: var(--serif);
     font-style: italic;
-    font-size: 22px;
+    font-size: clamp(24px, 2.2vw, 34px);
     color: var(--accent);
     white-space: nowrap;
 }
 
 .row .go {
-    width: 38px;
-    height: 38px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     border: 1px solid var(--line);
     display: flex;
@@ -427,7 +454,7 @@ h2 {
     transform: rotate(-45deg);
 }
 
-@media (max-width:640px) {
+@media (max-width:760px) {
     .row {
         grid-template-columns: 56px 1fr auto;
         gap: 14px;
@@ -456,7 +483,7 @@ h2 {
     overflow: hidden;
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
-    padding: 26px 0;
+    padding: 34px 0;
 }
 
 .marquee-track {
@@ -466,10 +493,10 @@ h2 {
 }
 
 .marquee-track span {
-    font-size: clamp(34px, 6vw, 76px);
+    font-size: clamp(48px, 8.5vw, 140px);
     font-weight: 600;
     letter-spacing: -.03em;
-    padding-right: 40px;
+    padding-right: 48px;
     white-space: nowrap;
 }
 
@@ -499,8 +526,8 @@ h2 {
 .socials {
     display: flex;
     gap: 22px;
-    margin-top: 40px;
-    font-size: 14px;
+    margin-top: 44px;
+    font-size: 16px;
     color: var(--muted);
 }
 
@@ -516,20 +543,20 @@ h2 {
 footer {
     background: var(--surface);
     border-top: 1px solid var(--line);
-    padding: 50px 0 0;
-    font-size: 13.5px;
+    padding: 72px 0 0;
+    font-size: clamp(15px, 1.15vw, 17px);
 }
 
 .foot-grid {
     display: grid;
     grid-template-columns: 1.3fr 1fr 1.3fr 1fr;
-    gap: 34px;
-    padding-bottom: 36px;
+    gap: 48px;
+    padding-bottom: 48px;
 }
 
 footer h4 {
-    margin: 0 0 14px;
-    font-size: 14.5px;
+    margin: 0 0 16px;
+    font-size: 17px;
     font-weight: 600;
 }
 
@@ -537,7 +564,7 @@ footer .foot-brand {
     font-family: var(--serif);
     font-style: italic;
     font-weight: 400;
-    font-size: 26px;
+    font-size: clamp(30px, 2.6vw, 42px);
     color: var(--accent);
 }
 
@@ -561,9 +588,9 @@ footer a:hover {
 
 .foot-bottom {
     border-top: 1px solid var(--line);
-    padding: 18px 6vw;
+    padding: 20px var(--pad-x);
     color: var(--muted);
-    font-size: 12.5px;
+    font-size: 14px;
 }
 
 @media (max-width:860px) {
@@ -582,7 +609,7 @@ footer a:hover {
 .overlay {
     position: fixed;
     inset: 0;
-    background: rgba(10, 5, 2, .65);
+    background: var(--overlay);
     display: none;
     align-items: flex-end;
     justify-content: center;
@@ -597,7 +624,7 @@ footer a:hover {
     background: var(--surface);
     border: 1px solid var(--line);
     width: 100%;
-    max-width: 540px;
+    max-width: 620px;
     max-height: 90vh;
     overflow-y: auto;
     border-radius: 24px 24px 0 0;
@@ -775,7 +802,7 @@ footer a:hover {
 .cart-item .rm {
     background: none;
     border: none;
-    color: #E07A63;
+    color: var(--danger);
     font-size: 12px;
     cursor: pointer;
     font-weight: 600;
@@ -818,9 +845,9 @@ footer a:hover {
     pointer-events: auto;
     background: var(--text);
     color: var(--bg);
-    padding: 13px 22px;
+    padding: 16px 28px;
     border-radius: 999px;
-    font-size: 13.5px;
+    font-size: 15.5px;
     font-weight: 600;
     cursor: pointer;
     box-shadow: 0 10px 30px rgba(0, 0, 0, .45);
@@ -865,7 +892,7 @@ footer a:hover {
 }
 
 .err {
-    color: #E07A63;
+    color: var(--danger);
     font-size: 13px;
     min-height: 18px;
     margin-top: 14px;
@@ -873,14 +900,14 @@ footer a:hover {
 
 .cake-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
 }
 
 .cake {
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: 16px;
+    border-radius: 22px;
     overflow: hidden;
     transition: transform .25s, border-color .25s;
 }
@@ -902,9 +929,9 @@ footer a:hover {
 }
 
 .cn {
-    padding: 14px;
+    padding: 18px;
     font-weight: 600;
-    font-size: 14.5px;
+    font-size: clamp(15px, 1.2vw, 18px);
 }
 
 @media (max-width:520px) {
@@ -915,10 +942,10 @@ footer a:hover {
 }
 
 .cat-title {
-    font-size: clamp(20px, 2.4vw, 26px);
+    font-size: clamp(26px, 2.8vw, 42px);
     font-weight: 600;
     letter-spacing: -.02em;
-    margin: 34px 0 16px;
+    margin: 48px 0 22px;
 }
 
 .wa-note {
@@ -962,7 +989,6 @@ footer a:hover {
     padding: 11px 12px;
     font-family: inherit;
     font-size: 15px;
-    color-scheme: dark;
 }
 
 .field input:focus {
@@ -1081,5 +1107,57 @@ footer a:hover {
     .field-row {
         grid-template-columns: 1fr;
         gap: 0;
+    }
+}
+
+/* ---------- header / hero background ---------- */
+.hero-full {
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    /* HEADER BACKGROUND IMAGE: untuk memakai foto asli, ganti baris background-image di bawah dengan
+     background-image:url('images/header.jpg');   (ukuran saran 1920x1080, taruh di folder images) */
+    background-image: url('images/cakes/martabak-jagung.jpeg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 28px var(--pad-x);
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(var(--bg-rgb), .94) 0%, rgba(var(--bg-rgb), .72) 42%, rgba(var(--bg-rgb), .18) 100%),
+        linear-gradient(180deg, rgba(var(--bg-rgb), 0) 72%, var(--bg) 100%);
+}
+
+.hero-bg span {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-full .wrap {
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width:760px) {
+    .hero-bg::after {
+        background: linear-gradient(180deg, rgba(var(--bg-rgb), .88), rgba(var(--bg-rgb), .78) 70%, var(--bg) 100%);
     }
 }

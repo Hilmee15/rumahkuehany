@@ -1,36 +1,36 @@
 const fmt = n => 'Rp ' + n.toLocaleString('id-ID');
 const WA = '6285379444875';
 const CAKE_IMG = {
-    "Bolu Gulung Coklat": "images/bolu-gulung-coklat.jpg",
-    "Bolu Gulung Original": "images/bolu-gulung-original.jpg",
-    "Bolu Gulung Pandan": "images/bolu-gulung-pandan.jpg",
-    "Bolu Kojo": "images/bolu-kojo.jpg",
-    "Brownies Kukus": "images/brownies-kukus.jpg",
-    "Cake Keju": "images/cake-keju.jpg",
-    "Cup Cake Coklat": "images/cup-cake-coklat.jpg",
-    "Cup Cake Keju": "images/cup-cake-keju.jpg",
-    "Dadar Gulung": "images/dadar-gulung.jpg",
-    "Klepon": "images/klepon.jpg",
-    "Lapis Beras": "images/lapis-beras.jpg",
-    "Lemper": "images/lemper.jpg",
-    "Lumpur": "images/lumpur.jpg",
-    "Martabak Jagung": "images/martabak-jagung.jpg",
-    "Martabak Kentang": "images/martabak-kentang.jpg",
-    "Martabak Sayur": "images/martabak-sayur.jpg",
-    "Onde Onde": "images/onde-onde.jpg",
-    "Pie Brownies": "images/pie-brownies.jpg",
-    "Pie Buah": "images/pie-buah.jpg",
-    "Pie Susu": "images/pie-susu.jpg",
-    "Risoles": "images/risoles.jpg",
-    "Samosa": "images/samosa.jpg",
-    "Semar Mendem": "images/semar-mendem.jpg",
-    "Sosis Solo": "images/sosis-solo.jpg",
-    "Srikaya": "images/srikaya.jpg",
-    "Sus": "images/sus.jpg",
-    "Sus Rogut": "images/sus-rogut.jpg",
-    "Tahu Fantasi": "images/tahu-fantasi.jpg"
+    "Bolu Gulung Coklat": "images/cakes/bolu-gulung-coklat.jpeg",
+    "Bolu Gulung Original": "images/cakes/bolu-gulung-original.jpeg",
+    "Bolu Gulung Pandan": "images/cakes/bolu-gulung-pandan.jpeg",
+    "Bolu Kojo": "images/cakes/bolu-kojo.jpeg",
+    "Brownies Kukus": "images/cakes/brownies.jpeg",
+    "Cake Keju": "images/cakes/cake-keju.jpeg",
+    "Cup Cake Coklat": "images/cakes/cupcake-coklat.jpeg",
+    "Cup Cake Keju": "images/cakes/cupcake-keju.jpeg",
+    "Dadar Gulung": "images/cakes/dadar-gulung.jpeg",
+    "Klepon": "images/cakes/klepon.jpeg",
+    "Lapis Beras": "images/cakes/lapis-beras.jpeg",
+    "Lemper": "images/cakes/lemper.jpeg",
+    "Lumpur": "images/cakes/lumpur.jpeg",
+    "Martabak Jagung": "images/cakes/martabak-jagung.jpeg",
+    "Martabak Kentang": "images/cakes/martabak-kentang.jpeg",
+    "Martabak Sayur": "images/cakes/martabak-sayur.jpeg",
+    "Onde Onde": "images/cakes/onde-onde.jpeg",
+    "Pie Brownies": "images/cakes/pie-brownies.jpeg",
+    "Pie Buah": "images/cakes/pie-buah.jpeg",
+    "Pie Susu": "images/cakes/pie-susu.jpeg",
+    "Risoles": "images/cakes/risoles.jpeg",
+    "Samosa": "images/cakes/samosa.jpeg",
+    "Semar Mendem": "images/cakes/semar-mendem.jpeg",
+    "Sosis Solo": "images/cakes/sosis-solo.jpeg",
+    "Srikaya": "images/cakes/srikaya.jpeg",
+    "Sus": "images/cakes/sus.jpeg",
+    "Sus Rogut": "images/cakes/sus-rogut.jpeg",
+    "Tahu Fantasi": "images/cakes/tahu-fantasi.jpeg"
 };
-/* PHOTO PLACEHOLDER: cakes without an entry in CAKE_IMG (Sus Pisang, Blackforest, Pancake) show a "foto belum tersedia" block. Add a photo by adding "Cake Name": "images/your-photo.jpg" to CAKE_IMG. */
+
 const BASE_CAKE = 3000;
 const ASIN = new Set(['Lemper', 'Semar Mendem', 'Risoles', 'Martabak Sayur', 'Martabak Jagung', 'Tahu Fantasi', 'Samosa', 'Sosis Solo', 'Sus Rogut', 'Martabak Kentang']);
 const cakeList = [
@@ -66,8 +66,7 @@ function renderCat(cat) {
     rows.innerHTML = list.map((p, i) => `
     <div class="row" onclick="openItem('${cat}','${p.id}')">
       <div class="n">0${i + 1}</div>
-      <!-- MENU IMAGE PLACEHOLDER: replace this .thumb div with <img class="thumb" src="your-photo.jpg" alt="${p.n}" style="width:72px;height:72px;border-radius:14px;object-fit:cover;"> -->
-      <div class="thumb ph-img">foto</div>
+      <img class="thumb" src="images/cakes/martabak-jagung.jpeg" alt="${p.n}" style="width:72px;height:72px;border-radius:14px;object-fit:cover;">
       <div><h3>${p.n}</h3><div class="d">${p.d}${cat === 'tampah' ? '<span class="wa-note">Pilihan kue ditentukan lewat WhatsApp.</span>' : ''}</div></div>
       <div class="price">${fmt(p.p)}</div>
       <div class="go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
@@ -80,13 +79,11 @@ document.getElementById('tabs').addEventListener('click', e => {
 });
 renderCat('tampah');
 
-/* cake gallery (Kue Manis / Kue Asin, no prices) */
 const cakeCard = c => `<div class="cake"><div class="cimg ${c.img ? '' : 'ph-img'}">${c.img ? `<img src="${c.img}" alt="${c.n}" loading="lazy">` : 'foto belum tersedia'}</div><div class="cn">${c.n}</div></div>`;
 document.getElementById('cakeGrid').innerHTML = [['Kue Manis', 'manis'], ['Kue Asin', 'asin']].map(([t, k]) =>
     `<div class="cat-title">${t}</div><div class="cake-grid">${cakeList.filter(c => c.cat === k).map(cakeCard).join('')}</div>`
 ).join('');
 
-/* item sheet */
 const itemOverlay = document.getElementById('itemOverlay'), itemSheet = document.getElementById('itemSheet');
 function readQty() { const v = parseInt(document.getElementById('qv').value, 10); return Number.isFinite(v) && v > 0 ? v : 1; }
 function snackExtra() {
@@ -161,7 +158,6 @@ function addToCart() {
     if (wasEdit) openCart();
 }
 
-/* cart */
 const cartbar = document.getElementById('cartbar'), badge = document.getElementById('cartBadge');
 const total = () => cart.reduce((s, i) => s + i.unit * i.qty, 0), count = () => cart.reduce((s, i) => s + i.qty, 0);
 function renderBar() {
@@ -239,7 +235,5 @@ function copyNumber() {
     try { navigator.clipboard.writeText('0853-7944-4875').then(done, done); } catch (e) { done(); }
 }
 
-
-/* scroll reveal */
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
