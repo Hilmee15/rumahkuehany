@@ -66,7 +66,7 @@ function renderCat(cat) {
     rows.innerHTML = list.map((p, i) => `
     <div class="row" onclick="openItem('${cat}','${p.id}')">
       <div class="n">0${i + 1}</div>
-      <img class="thumb" src="images/cakes/martabak-jagung.jpeg" alt="${p.n}" style="width:72px;height:72px;border-radius:14px;object-fit:cover;">
+      <img class="thumb" src="images/cakes/snackbox-isi-3.jpeg" alt="${p.n}" style="width:72px;height:72px;border-radius:14px;object-fit:cover;">
       <div><h3>${p.n}</h3><div class="d">${p.d}${cat === 'tampah' ? '<span class="wa-note">Pilihan kue ditentukan lewat WhatsApp.</span>' : ''}</div></div>
       <div class="price">${fmt(p.p)}</div>
       <div class="go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
