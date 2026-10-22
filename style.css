@@ -1,5 +1,4 @@
 :root {
-    /* TEMA UTAMA: latar cokelat muda yang lembut, teks cokelat tua */
     --bg: #F1E6D7;
     --surface: #F8F1E7;
     --surface-2: #E8DAC8;
@@ -21,7 +20,6 @@
     padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-/* TEMA KEBALIKAN: latar cokelat, teks putih. Aktifkan dengan <html data-theme="brown"> */
 html[data-theme="brown"] {
     --bg: #2B1D14;
     --surface: #36251A;
@@ -41,6 +39,16 @@ html[data-theme="brown"] {
 html {
     scroll-padding-top: 92px;
     scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+html, body {
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
 }
 
 *,
@@ -357,7 +365,7 @@ h2 {
     }
 }
 
-/* menu list (editorial rows) */
+/* menu list */
 .tabs {
     display: flex;
     gap: 10px;
@@ -1121,8 +1129,6 @@ footer a:hover {
     position: absolute;
     inset: 0;
     z-index: 0;
-    /* HEADER BACKGROUND IMAGE: untuk memakai foto asli, ganti baris background-image di bawah dengan
-     background-image:url('images/header.jpg');   (ukuran saran 1920x1080, taruh di folder images) */
     background-image: url('images/cakes/martabak-jagung.jpeg');
     background-size: cover;
     background-position: center;
